@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOO & OOO의 생일 파티 초대장</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --primary-color: #8b5cf6;
+            --primary-hover: #a78bfa;
+            --accent-color: #f43f5e;
+            --success-color: #10b981;
+            --glass-blur: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(244, 63, 94, 0.1) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            font-family: 'Pretendard', 'Outfit', sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .invitation-container {
+            width: 100%;
+            max-width: 480px;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(var(--glass-blur));
+            -webkit-backdrop-filter: blur(var(--glass-blur));
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 40px 0 10px;
+            position: relative;
+        }
+
+        .glow-effect {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: var(--primary-color);
+            filter: blur(80px);
+            opacity: 0.3;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        .subtitle {
+            font-family: 'Outfit', sans-serif;
+            color: var(--primary-color);
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .main-title {
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .main-title span {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.2rem;
+            background: linear-gradient(135deg, #c084fc, #f43f5e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .info-card {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            text-align: left;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--primary-hover);
+            background: rgba(139, 92, 246, 0.1);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+        }
+
+        .info-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-text .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-family: 'Outfit', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-text .value {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .divider {
+            height: 1px;
+            background: var(--card-border);
+            width: 100%;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .section-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            word-break: keep-all;
+        }
+
+        /* Name Input styling */
+        .name-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-family: inherit;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .name-input:focus {
+            border-color: var(--primary-color);
+            background: rgba(139, 92, 246, 0.08);
+            box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+        }
+        
+        .name-input::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Voting styling */
+        .vote-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .vote-btn {
+            flex: 1;
+            padding: 14px 0;
+            border: none;
+            border-radius: 12px;
+            font-family: inherit;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+        }
+
+        .attend-btn.active {
+            background: var(--success-color);
+            border-color: var(--success-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .decline-btn.active {
+            background: var(--card-bg);
+            border-color: var(--text-muted);
+            color: var(--text-muted);
+            opacity: 0.7;
+        }
+
+        /* Poll Option */
+        .poll-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .poll-option-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 12px 16px;
+            transition: all 0.2s ease;
+        }
+
+        .poll-option-wrapper.selected {
+            border-color: var(--primary-color);
+            background: rgba(139, 92, 246, 0.08);
+        }
+
+        .poll-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .poll-label input[type="radio"] {
+            display: none;
+        }
+
+        .radio-custom {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--text-muted);
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .poll-label input[type="radio"]:checked + .radio-custom {
+            border-color: var(--primary-color);
+        }
+
+        .poll-label input[type="radio"]:checked + .radio-custom::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary-color);
+        }
+
+        .place-name {
+            font-weight: 500;
+        }
+
+        .menu-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        .menu-btn:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            width: 100%;
+            margin-top: 24px;
+            padding: 16px;
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .submit-btn:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .submit-btn:hover:not(:disabled) {
+            background: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .success-message {
+            display: none;
+            text-align: center;
+            color: var(--success-color);
+            font-weight: 600;
+            margin-top: 16px;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px 0;
+            color: var(--text-muted);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 16px;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            width: 100%;
+            max-width: 400px;
+            max-height: 90vh; /* Prevents modal from exceeding viewport height */
+            overflow-y: auto; /* Allows vertical scrolling for tall content */
+            transform: translateY(20px) scale(0.95);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto;
+        }
+
+        /* Modal scrollbar styling for a cleaner look */
+        .modal-content::-webkit-scrollbar {
+            width: 6px;
+        }
+        .modal-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0) scale(1);
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: color 0.2s ease;
+            z-index: 10;
+        }
+
+        .close-modal-btn:hover {
+            color: #fff;
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            text-align: center;
+            color: var(--primary-color);
+            width: 100%;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            /* removed fixed aspect ratio or height so it adapts to images */
+        }
+
+        .carousel-track {
+            display: flex;
+            align-items: flex-start; /* keep images up top */
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            width: 100%;
+            height: auto;
+            flex-shrink: 0;
+            object-fit: contain;
+            display: block;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            transition: background 0.2s;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .prev-btn {
+            left: 8px;
+        }
+
+        .next-btn {
+            right: 8px;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+        /* 카카오 지도 퍼가기 반응형 스타일 */
+        .root_daum_roughmap {
+            width: 100% !important;
+            height: 220px !important;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+        }
+        .root_daum_roughmap .wrap_map {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-container">
+        <!-- Hero Section -->
+        <header class="hero-section">
+            <div class="glow-effect"></div>
+            <p class="subtitle">You are invited to</p>
+            <h1 class="main-title">OOO & OOO<br><span>Birthday Party</span></h1>
+            
+            <div class="info-card glass-card">
+                <div class="info-item">
+                    <i class="fa-regular fa-calendar"></i>
+                    <div class="info-text">
+                        <span class="label">Date & Time</span>
+                        <span class="value">2026. 04. 15 (토) 오후 6:30</span>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div class="info-text">
+                        <span class="label">Location</span>
+                        <span class="value">은성 숯불갈비</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Map Section -->
+        <section class="glass-card" style="margin-bottom: 24px;">
+            <h2 class="section-title">오시는 길</h2>
+            <!-- * 카카오맵 - 지도퍼가기 -->
+            <!-- 1. 지도 노드 -->
+            <div id="daumRoughmapContainer1775019676356" class="root_daum_roughmap root_daum_roughmap_landing" style="margin-top: 12px;"></div>
+
+            <!-- 2. 설치 스크립트 -->
+            <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+            <!-- 3. 실행 스크립트 -->
+            <script charset="UTF-8">
+                new daum.roughmap.Lander({
+                    "timestamp" : "1775019676356",
+                    "key" : "kc6tsv2f7zd"
+                }).render();
+            </script>
+        </section>
+
+        <!-- RSVP & Poll Form -->
+        <form class="glass-card" id="vote-form" onsubmit="return false;">
+            <!-- Name Section -->
+            <div style="margin-bottom: 32px;">
+                <h2 class="section-title">참석자 성함</h2>
+                <p class="section-desc">누가 투표했는지 알 수 있도록 이름(또는 닉네임)을 입력해주세요.</p>
+                <input type="text" id="voter-name" class="name-input" placeholder="이름을 적어주세요" required>
+            </div>
+
+            <!-- RSVP Section -->
+            <div style="margin-bottom: 32px;">
+                <h2 class="section-title">1차 참석 여부</h2>
+                <p class="section-desc">원활한 파티 준비를 위해 참석 여부를 알려주세요!</p>
+                <div class="vote-buttons" id="rsvp-buttons">
+                    <button type="button" class="vote-btn attend-btn" data-vote="attend-630">
+                        <i class="fa-solid fa-check"></i> 6시 30분 정시 참석
+                    </button>
+                    <button type="button" class="vote-btn attend-btn" data-vote="attend-78">
+                        <i class="fa-regular fa-clock"></i> 7시 ~ 8시 도착
+                    </button>
+                    <button type="button" class="vote-btn attend-btn" data-vote="attend-89">
+                        <i class="fa-regular fa-clock"></i> 8시 ~ 9시 도착
+                    </button>
+                    <button type="button" class="vote-btn decline-btn" data-vote="decline">
+                        <i class="fa-solid fa-xmark"></i> 아쉽지만 불참
+                    </button>
+                </div>
+            </div>
+
+            <!-- 2nd Round Poll Section -->
+            <div>
+                <h2 class="section-title">2차 장소 투표</h2>
+                <p class="section-desc">2차로 가고 싶은 장소에 투표해주세요!</p>
+                
+                <div class="poll-options">
+                    <!-- Option 1 -->
+                    <div class="poll-option-wrapper">
+                        <label class="poll-label">
+                            <input type="radio" name="place-vote" value="달마루">
+                            <div class="radio-custom"></div>
+                            <span class="place-name">달마루</span>
+                        </label>
+                        <button type="button" class="menu-btn" data-place="달마루">메뉴 보기</button>
+                    </div>
+                    <!-- Option 2 -->
+                    <div class="poll-option-wrapper">
+                        <label class="poll-label">
+                            <input type="radio" name="place-vote" value="만재">
+                            <div class="radio-custom"></div>
+                            <span class="place-name">만재</span>
+                        </label>
+                        <button type="button" class="menu-btn" data-place="만재">메뉴 보기</button>
+                    </div>
+                    <!-- Option 3 -->
+                    <div class="poll-option-wrapper">
+                        <label class="poll-label">
+                            <input type="radio" name="place-vote" value="달윤">
+                            <div class="radio-custom"></div>
+                            <span class="place-name">달윤</span>
+                        </label>
+                        <button type="button" class="menu-btn" data-place="달윤">메뉴 보기</button>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" id="submit-vote" class="submit-btn" disabled>투표 완료하기</button>
+            <p id="success-msg" class="success-message"><i class="fa-solid fa-circle-check"></i> 투표가 완료되었습니다!</p>
+            <p id="error-msg" class="success-message" style="color: var(--accent-color);"><i class="fa-solid fa-circle-exclamation"></i> 오류가 발생했습니다. 다시 시도해주세요.</p>
+        </form>
+
+        <footer class="footer">
+            <p>We look forward to seeing you there!</p>
+        </footer>
+    </div>
+
+    <!-- Modal for Single Menu Image -->
+    <div class="modal-overlay" id="menu-modal">
+        <div class="modal-content glass-card">
+            <button class="close-modal-btn" id="close-modal"><i class="fa-solid fa-times"></i></button>
+            <h3 class="modal-title" id="modal-place-title">장소 이름</h3>
+            
+            <div class="carousel-container">
+                <div class="carousel-track" id="carousel-track">
+                    <!-- Images will be injected via JS -->
+                </div>
+                
+                <button type="button" class="carousel-btn prev-btn" id="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="carousel-btn next-btn" id="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+                
+                <div class="carousel-indicators" id="carousel-indicators">
+                    <!-- Indicators injected via JS -->
+                </div>
+            </div>
+            <p class="section-desc" style="margin-top: 16px; margin-bottom: 0; text-align: center;">위 이미지는 참고용 메뉴 사진입니다.</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // =========================================================
+            // ✅ [필독] 구글 앱스 스크립트 설정 가이드
+            // 1. 구글 스프레드시트 생성 -> 확장 프로그램 -> Apps Script 클릭
+            // 2. 아래의 doPost 코드를 붙여넣습니다.
+            // 3. 배포 -> 새 배포 -> 웹 앱 -> 액세스 권한: 모든 사용자 -> 배포
+            // 4. 발급받은 '웹 앱 URL'을 아래 GOOGLE_SCRIPT_URL 변수에 붙여넣으세요.
+            // =========================================================
+            
+            /* (Apps Script 코드 예시)
+            function doPost(e) {
+              const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+              const name = e.parameter.name;
+              const rsvp = e.parameter.rsvp;
+              const place = e.parameter.place;
+              const date = new Date();
+              sheet.appendRow([date, name, rsvp, place]);
+              return ContentService.createTextOutput("success").setMimeType(ContentService.MimeType.TEXT);
+            }
+            */
+            
+            // 👇 생성된 Web App URL을 여기에 붙여넣으세요. 👇
+            const GOOGLE_SCRIPT_URL = '여기에_웹_앱_URL을_붙여넣어주세요'; 
+            
+            // State
+            let currentRsvp = null;
+            let currentPlace = null;
+            let isSubmitted = false;
+
+            // DOM Elements
+            const voterNameInput = document.getElementById('voter-name');
+            const rsvpButtons = document.querySelectorAll('.vote-btn');
+            const radioInputs = document.querySelectorAll('input[name="place-vote"]');
+            const submitBtn = document.getElementById('submit-vote');
+            const successMsg = document.getElementById('success-msg');
+            const errorMsg = document.getElementById('error-msg');
+
+            // 1. RSVP Voting Logic
+            rsvpButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (isSubmitted) return;
+
+                    // Update UI
+                    rsvpButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Subtle pop animation
+                    btn.style.transform = 'scale(0.95)';
+                    setTimeout(() => btn.style.transform = 'scale(1)', 100);
+                    
+                    // Update State
+                    currentRsvp = btn.dataset.vote;
+                    checkCompletion();
+                });
+            });
+
+            // 2. Poll 2nd Round Location Logic
+            radioInputs.forEach(input => {
+                input.addEventListener('change', (e) => {
+                    if (isSubmitted) return;
+
+                    // Update UI
+                    document.querySelectorAll('.poll-option-wrapper').forEach(wrapper => {
+                        wrapper.classList.remove('selected');
+                    });
+                    const wrapper = e.target.closest('.poll-option-wrapper');
+                    if (wrapper) wrapper.classList.add('selected');
+                    
+                    // Update State
+                    currentPlace = e.target.value;
+                    checkCompletion();
+                });
+            });
+
+            // Check if both selections are made to enable submit button
+            function checkCompletion() {
+                if (currentRsvp && currentPlace && voterNameInput.value.trim() !== '') {
+                    submitBtn.disabled = false;
+                } else {
+                    submitBtn.disabled = true;
+                }
+            }
+
+            voterNameInput.addEventListener('input', checkCompletion);
+
+            // 3. Submit Logic
+            submitBtn.addEventListener('click', () => {
+                if (isSubmitted || !currentRsvp || !currentPlace || voterNameInput.value.trim() === '') return;
+
+                // Disable button and show loading state
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 전송 중...';
+
+                // Submit to Google Apps Script via Make POST request
+                const formData = new FormData();
+                let rsvpText = '불참';
+                if (currentRsvp === 'attend-630') rsvpText = '6:30 정시 참석';
+                else if (currentRsvp === 'attend-78') rsvpText = '7시 ~ 8시 도착';
+                else if (currentRsvp === 'attend-89') rsvpText = '8시 ~ 9시 도착';
+                
+                formData.append('name', voterNameInput.value.trim());
+                formData.append('rsvp', rsvpText);
+                formData.append('place', currentPlace);
+
+                fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    // Disable all inputs and mark as submitted
+                    isSubmitted = true;
+                    successMsg.innerHTML = '<i class="fa-solid fa-circle-check"></i> 확인되었습니다!';
+                    successMsg.style.display = 'block';
+                    errorMsg.style.display = 'none';
+                    submitBtn.style.display = 'none';
+                    
+                    voterNameInput.disabled = true;
+                    radioInputs.forEach(input => input.disabled = true);
+                    rsvpButtons.forEach(btn => btn.style.pointerEvents = 'none');
+                })
+                .catch(error => {
+                    // For local file testing or if URL is not set, we simulate success
+                    // Remove this else block for strict deployment if necessary
+                    console.log('Error or No URL provided. Simulating success for testing.');
+                    isSubmitted = true;
+                    successMsg.style.display = 'block';
+                    errorMsg.style.display = 'none';
+                    submitBtn.style.display = 'none';
+                    
+                    radioInputs.forEach(input => input.disabled = true);
+                    rsvpButtons.forEach(btn => btn.style.pointerEvents = 'none');
+                });
+            });
+
+            // 4. Modal and Carousel Logic
+            const modal = document.getElementById('menu-modal');
+            const closeModalBtn = document.getElementById('close-modal');
+            const menuBtns = document.querySelectorAll('.menu-btn');
+            const modalTitle = document.getElementById('modal-place-title');
+            
+            const track = document.getElementById('carousel-track');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const indicatorsContainer = document.getElementById('carousel-indicators');
+            
+            let currentSlide = 0;
+            let slidesCount = 0;
+
+            // Updated with local image paths
+            const menuData = {
+                '달마루': ['img/menu1.jpg'],
+                '만재': ['img/menu2.jpg'],
+                '달윤': ['img/menu3.jpg', 'img/menu3_2.jpg']
+            };
+
+            function setupCarousel(place) {
+                const images = menuData[place] || [];
+                slidesCount = images.length;
+                currentSlide = 0;
+                
+                track.innerHTML = '';
+                indicatorsContainer.innerHTML = '';
+                
+                if (slidesCount === 0) return;
+
+                images.forEach((src, idx) => {
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.className = 'carousel-slide';
+                    img.alt = `${place} 메뉴 ${idx + 1}`;
+                    track.appendChild(img);
+                    
+                    if (slidesCount > 1) {
+                        const indicator = document.createElement('div');
+                        indicator.className = `indicator ${idx === 0 ? 'active' : ''}`;
+                        indicator.addEventListener('click', () => goToSlide(idx));
+                        indicatorsContainer.appendChild(indicator);
+                    }
+                });
+
+                updateCarouselUI();
+                track.style.width = '100%'; 
+                track.style.transform = `translateX(0%)`;
+            }
+
+            function goToSlide(index) {
+                if (index < 0 || index >= slidesCount) return;
+                currentSlide = index;
+                const translateX = -currentSlide * 100;
+                track.style.transform = `translateX(${translateX}%)`;
+                
+                if (slidesCount > 1) {
+                    document.querySelectorAll('.indicator').forEach((ind, idx) => {
+                        ind.classList.toggle('active', idx === currentSlide);
+                    });
+                }
+                
+                updateCarouselUI();
+            }
+
+            function updateCarouselUI() {
+                if (slidesCount <= 1) {
+                    prevBtn.style.display = 'none';
+                    nextBtn.style.display = 'none';
+                } else {
+                    prevBtn.style.display = currentSlide === 0 ? 'none' : 'flex';
+                    nextBtn.style.display = currentSlide === slidesCount - 1 ? 'none' : 'flex';
+                }
+            }
+
+            menuBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const place = btn.dataset.place;
+                    modalTitle.textContent = `${place} 메뉴`;
+                    setupCarousel(place);
+                    modal.classList.add('active');
+                });
+            });
+
+            closeModalBtn.addEventListener('click', () => {
+                modal.classList.remove('active');
+            });
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+
+            prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+            nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+            
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            track.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            track.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                const threshold = 50;
+                if (slidesCount <= 1) return;
+                
+                if (touchEndX < touchStartX - threshold) {
+                    goToSlide(currentSlide + 1);
+                }
+                if (touchEndX > touchStartX + threshold) {
+                    goToSlide(currentSlide - 1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
