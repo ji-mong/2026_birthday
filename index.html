@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,12 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --bg-color: #0f172a;
@@ -33,7 +36,7 @@
 
         body {
             background-color: var(--bg-color);
-            background-image: 
+            background-image:
                 radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
                 radial-gradient(at 100% 100%, rgba(244, 63, 94, 0.1) 0px, transparent 50%);
             background-attachment: fixed;
@@ -194,7 +197,7 @@
             background: rgba(139, 92, 246, 0.08);
             box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
         }
-        
+
         .name-input::placeholder {
             color: rgba(255, 255, 255, 0.3);
         }
@@ -283,11 +286,11 @@
             transition: all 0.2s ease;
         }
 
-        .poll-label input[type="radio"]:checked + .radio-custom {
+        .poll-label input[type="radio"]:checked+.radio-custom {
             border-color: var(--primary-color);
         }
 
-        .poll-label input[type="radio"]:checked + .radio-custom::after {
+        .poll-label input[type="radio"]:checked+.radio-custom::after {
             content: '';
             position: absolute;
             top: 50%;
@@ -361,8 +364,15 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .footer {
@@ -401,8 +411,10 @@
         .modal-content {
             width: 100%;
             max-width: 400px;
-            max-height: 90vh; /* Prevents modal from exceeding viewport height */
-            overflow-y: auto; /* Allows vertical scrolling for tall content */
+            max-height: 90vh;
+            /* Prevents modal from exceeding viewport height */
+            overflow-y: auto;
+            /* Allows vertical scrolling for tall content */
             transform: translateY(20px) scale(0.95);
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
@@ -417,6 +429,7 @@
         .modal-content::-webkit-scrollbar {
             width: 6px;
         }
+
         .modal-content::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.2);
             border-radius: 4px;
@@ -462,7 +475,8 @@
 
         .carousel-track {
             display: flex;
-            align-items: flex-start; /* keep images up top */
+            align-items: flex-start;
+            /* keep images up top */
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
@@ -523,6 +537,7 @@
             border-radius: 12px !important;
             overflow: hidden !important;
         }
+
         .root_daum_roughmap .wrap_map {
             width: 100% !important;
             height: 100% !important;
@@ -543,6 +558,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="invitation-container">
         <!-- Hero Section -->
@@ -550,7 +566,7 @@
             <div class="glow-effect"></div>
             <p class="subtitle">You are invited to</p>
             <h1 class="main-title">OOO & OOO<br><span>Birthday Party</span></h1>
-            
+
             <div class="info-card glass-card">
                 <div class="info-item">
                     <i class="fa-regular fa-calendar"></i>
@@ -575,16 +591,18 @@
             <h2 class="section-title">오시는 길</h2>
             <!-- * 카카오맵 - 지도퍼가기 -->
             <!-- 1. 지도 노드 -->
-            <div id="daumRoughmapContainer1775019676356" class="root_daum_roughmap root_daum_roughmap_landing" style="margin-top: 12px;"></div>
+            <div id="daumRoughmapContainer1775019676356" class="root_daum_roughmap root_daum_roughmap_landing"
+                style="margin-top: 12px;"></div>
 
             <!-- 2. 설치 스크립트 -->
-            <script charset="UTF-8" class="daum_roughmap_loader_script" src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+            <script charset="UTF-8" class="daum_roughmap_loader_script"
+                src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
 
             <!-- 3. 실행 스크립트 -->
             <script charset="UTF-8">
                 new daum.roughmap.Lander({
-                    "timestamp" : "1775019676356",
-                    "key" : "kc6tsv2f7zd"
+                    "timestamp": "1775019676356",
+                    "key": "kc6tsv2f7zd"
                 }).render();
             </script>
         </section>
@@ -622,7 +640,7 @@
             <div>
                 <h2 class="section-title">2차 장소 투표</h2>
                 <p class="section-desc">2차로 가고 싶은 장소에 투표해주세요!</p>
-                
+
                 <div class="poll-options">
                     <!-- Option 1 -->
                     <div class="poll-option-wrapper">
@@ -656,7 +674,8 @@
 
             <button type="button" id="submit-vote" class="submit-btn" disabled>투표 완료하기</button>
             <p id="success-msg" class="success-message"><i class="fa-solid fa-circle-check"></i> 투표가 완료되었습니다!</p>
-            <p id="error-msg" class="success-message" style="color: var(--accent-color);"><i class="fa-solid fa-circle-exclamation"></i> 오류가 발생했습니다. 다시 시도해주세요.</p>
+            <p id="error-msg" class="success-message" style="color: var(--accent-color);"><i
+                    class="fa-solid fa-circle-exclamation"></i> 오류가 발생했습니다. 다시 시도해주세요.</p>
         </form>
 
         <footer class="footer">
@@ -669,20 +688,23 @@
         <div class="modal-content glass-card">
             <button class="close-modal-btn" id="close-modal"><i class="fa-solid fa-times"></i></button>
             <h3 class="modal-title" id="modal-place-title">장소 이름</h3>
-            
+
             <div class="carousel-container">
                 <div class="carousel-track" id="carousel-track">
                     <!-- Images will be injected via JS -->
                 </div>
-                
-                <button type="button" class="carousel-btn prev-btn" id="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
-                <button type="button" class="carousel-btn next-btn" id="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
-                
+
+                <button type="button" class="carousel-btn prev-btn" id="prev-btn"><i
+                        class="fa-solid fa-chevron-left"></i></button>
+                <button type="button" class="carousel-btn next-btn" id="next-btn"><i
+                        class="fa-solid fa-chevron-right"></i></button>
+
                 <div class="carousel-indicators" id="carousel-indicators">
                     <!-- Indicators injected via JS -->
                 </div>
             </div>
-            <p class="section-desc" style="margin-top: 16px; margin-bottom: 0; text-align: center;">위 이미지는 참고용 메뉴 사진입니다.</p>
+            <p class="section-desc" style="margin-top: 16px; margin-bottom: 0; text-align: center;">위 이미지는 참고용 메뉴 사진입니다.
+            </p>
         </div>
     </div>
 
@@ -696,7 +718,7 @@
             // 3. 배포 -> 새 배포 -> 웹 앱 -> 액세스 권한: 모든 사용자 -> 배포
             // 4. 발급받은 '웹 앱 URL'을 아래 GOOGLE_SCRIPT_URL 변수에 붙여넣으세요.
             // =========================================================
-            
+
             /* (Apps Script 코드 예시)
             function doPost(e) {
               const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
@@ -708,10 +730,10 @@
               return ContentService.createTextOutput("success").setMimeType(ContentService.MimeType.TEXT);
             }
             */
-            
+
             // 👇 생성된 Web App URL을 여기에 붙여넣으세요. 👇
-            const GOOGLE_SCRIPT_URL = '여기에_웹_앱_URL을_붙여넣어주세요'; 
-            
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyCjsq4YYmN9NF5CXv3vHeYatZtQj5UKlVW1xmIBVQeejTseTXiQqkqnqTc2DaDPkmh/exec';
+
             // State
             let currentRsvp = null;
             let currentPlace = null;
@@ -733,11 +755,11 @@
                     // Update UI
                     rsvpButtons.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    
+
                     // Subtle pop animation
                     btn.style.transform = 'scale(0.95)';
                     setTimeout(() => btn.style.transform = 'scale(1)', 100);
-                    
+
                     // Update State
                     currentRsvp = btn.dataset.vote;
                     checkCompletion();
@@ -755,7 +777,7 @@
                     });
                     const wrapper = e.target.closest('.poll-option-wrapper');
                     if (wrapper) wrapper.classList.add('selected');
-                    
+
                     // Update State
                     currentPlace = e.target.value;
                     checkCompletion();
@@ -781,45 +803,41 @@
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 전송 중...';
 
-                // Submit to Google Apps Script via Make POST request
-                const formData = new FormData();
                 let rsvpText = '불참';
                 if (currentRsvp === 'attend-630') rsvpText = '6:30 정시 참석';
                 else if (currentRsvp === 'attend-78') rsvpText = '7시 ~ 8시 도착';
                 else if (currentRsvp === 'attend-89') rsvpText = '8시 ~ 9시 도착';
-                
-                formData.append('name', voterNameInput.value.trim());
-                formData.append('rsvp', rsvpText);
-                formData.append('place', currentPlace);
+
+                // 🚨 핵심 수정: FormData 대신 URLSearchParams 사용 (405 CORS 에러 방지)
+                const urlParams = new URLSearchParams();
+                urlParams.append('name', voterNameInput.value.trim());
+                urlParams.append('rsvp', rsvpText);
+                urlParams.append('place', currentPlace);
 
                 fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
-                    body: formData
+                    body: urlParams // Content-Type이 application/x-www-form-urlencoded로 자동 지정됨
                 })
-                .then(response => {
-                    // Disable all inputs and mark as submitted
-                    isSubmitted = true;
-                    successMsg.innerHTML = '<i class="fa-solid fa-circle-check"></i> 확인되었습니다!';
-                    successMsg.style.display = 'block';
-                    errorMsg.style.display = 'none';
-                    submitBtn.style.display = 'none';
-                    
-                    voterNameInput.disabled = true;
-                    radioInputs.forEach(input => input.disabled = true);
-                    rsvpButtons.forEach(btn => btn.style.pointerEvents = 'none');
-                })
-                .catch(error => {
-                    // For local file testing or if URL is not set, we simulate success
-                    // Remove this else block for strict deployment if necessary
-                    console.log('Error or No URL provided. Simulating success for testing.');
-                    isSubmitted = true;
-                    successMsg.style.display = 'block';
-                    errorMsg.style.display = 'none';
-                    submitBtn.style.display = 'none';
-                    
-                    radioInputs.forEach(input => input.disabled = true);
-                    rsvpButtons.forEach(btn => btn.style.pointerEvents = 'none');
-                });
+                    .then(response => {
+                        // Disable all inputs and mark as submitted
+                        isSubmitted = true;
+                        successMsg.innerHTML = '<i class="fa-solid fa-circle-check"></i> 확인되었습니다!';
+                        successMsg.style.display = 'block';
+                        errorMsg.style.display = 'none';
+                        submitBtn.style.display = 'none';
+
+                        voterNameInput.disabled = true;
+                        radioInputs.forEach(input => input.disabled = true);
+                        rsvpButtons.forEach(btn => btn.style.pointerEvents = 'none');
+                    })
+                    .catch(error => {
+                        console.error('Fetch 에러:', error);
+                        // 실패 시 에러 메시지 노출 및 버튼 복구
+                        successMsg.style.display = 'none';
+                        errorMsg.style.display = 'block';
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = '투표 완료하기';
+                    });
             });
 
             // 4. Modal and Carousel Logic
@@ -827,12 +845,12 @@
             const closeModalBtn = document.getElementById('close-modal');
             const menuBtns = document.querySelectorAll('.menu-btn');
             const modalTitle = document.getElementById('modal-place-title');
-            
+
             const track = document.getElementById('carousel-track');
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
             const indicatorsContainer = document.getElementById('carousel-indicators');
-            
+
             let currentSlide = 0;
             let slidesCount = 0;
 
@@ -847,10 +865,10 @@
                 const images = menuData[place] || [];
                 slidesCount = images.length;
                 currentSlide = 0;
-                
+
                 track.innerHTML = '';
                 indicatorsContainer.innerHTML = '';
-                
+
                 if (slidesCount === 0) return;
 
                 images.forEach((src, idx) => {
@@ -859,7 +877,7 @@
                     img.className = 'carousel-slide';
                     img.alt = `${place} 메뉴 ${idx + 1}`;
                     track.appendChild(img);
-                    
+
                     if (slidesCount > 1) {
                         const indicator = document.createElement('div');
                         indicator.className = `indicator ${idx === 0 ? 'active' : ''}`;
@@ -869,7 +887,7 @@
                 });
 
                 updateCarouselUI();
-                track.style.width = '100%'; 
+                track.style.width = '100%';
                 track.style.transform = `translateX(0%)`;
             }
 
@@ -878,13 +896,13 @@
                 currentSlide = index;
                 const translateX = -currentSlide * 100;
                 track.style.transform = `translateX(${translateX}%)`;
-                
+
                 if (slidesCount > 1) {
                     document.querySelectorAll('.indicator').forEach((ind, idx) => {
                         ind.classList.toggle('active', idx === currentSlide);
                     });
                 }
-                
+
                 updateCarouselUI();
             }
 
@@ -920,23 +938,23 @@
 
             prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
             nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
-            
+
             let touchStartX = 0;
             let touchEndX = 0;
-            
+
             track.addEventListener('touchstart', e => {
                 touchStartX = e.changedTouches[0].screenX;
             }, { passive: true });
-            
+
             track.addEventListener('touchend', e => {
                 touchEndX = e.changedTouches[0].screenX;
                 handleSwipe();
             }, { passive: true });
-            
+
             function handleSwipe() {
                 const threshold = 50;
                 if (slidesCount <= 1) return;
-                
+
                 if (touchEndX < touchStartX - threshold) {
                     goToSlide(currentSlide + 1);
                 }
@@ -947,4 +965,5 @@
         });
     </script>
 </body>
+
 </html>
